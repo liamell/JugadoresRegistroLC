@@ -1,4 +1,4 @@
-package edu.ucne.jugadoresregistrolc.data.presentation
+package edu.ucne.jugadoresregistrolc.data.presentation.JuegoScreens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,16 +27,31 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import edu.ucne.jugadoresregistrolc.data.entities.JugadorEntity
-import edu.ucne.jugadoresregistrolc.data.repositories.JugadorRepository
+import androidx.hilt.navigation.compose.hiltViewModel
+import edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens.JugadorUiEvent
+import edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens.PartidaViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun JugadorScreen(
-    jugadorRepository: JugadorRepository
+   viewModel: PartidaViewModel = hiltViewModel(),
+    onBack: () -> Unit,
+    jugadorId: Int?
 ) {
+    val uiState by viewModel.uiState.collectAsState()
+    JugadorBodyScreen(
+        uiState = uiState,
+        onEvent = viewModel:: onEvent,
+        onBack = onBack
+
+    )
+}
+@Composable
+fun JugadorBodyScreen(
+    uiState: PartidaViewModel.JugadorUiState,
+    onEvent: (JugadorUiEvent) -> Unit,
+    onBack:  () -> Unit
+){
     var nombre by remember { mutableStateOf("") }
     var partidas by remember { mutableStateOf("") }
     var errorMessage: String? by remember { mutableStateOf(null) }
@@ -57,8 +73,8 @@ fun JugadorScreen(
                 ) {
                     OutlinedTextField(
                         label = { Text(text = "Nombre") },
-                        value = nombre,
-                        onValueChange = { nombre = it },
+                        value = uiState.nombre,
+                        onValueChange = { onEvent(JugadorUiEvent.NombreChanged(it)) },
                         modifier = Modifier.fillMaxWidth()
                     )
                     OutlinedTextField(
@@ -99,15 +115,17 @@ fun JugadorScreen(
                                     return@OutlinedButton
                                 }
                                 scope.launch {
-                                    jugadorRepository.save(
-                                        JugadorEntity(
-                                            nombre = nombre,
-                                            partidas = partidas.toInt()
-                                        )
-                                    )
-                                    nombre = ""
-                                    partidas = ""
-                                    errorMessage = ""
+                                    onEvent(JugadorUiEvent.Save)
+
+//                                    jugadorRepository.save(
+//                                        JugadorEntity(
+//                                            nombre = nombre,
+//                                            partidas = partidas.toInt()
+//                                        )
+//                                    )
+//                                    nombre = ""
+//                                    partidas = ""
+//                                    errorMessage = ""
                                 }
                             }) {
                             Icon(
@@ -119,14 +137,6 @@ fun JugadorScreen(
                     }
                 }
             }
-            val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
-            val jugadorList by jugadorRepository.getAll()
-                .collectAsStateWithLifecycle(
-                    initialValue = emptyList(),
-                    lifecycleOwner = lifecycleOwner,
-                    minActiveState = Lifecycle.State.STARTED
-                )
-            JugadorListScreen(jugadorList)
         }
     }
 }
