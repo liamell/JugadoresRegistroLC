@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 
 }
-
 android {
     namespace = "edu.ucne.jugadoresregistrolc"
     compileSdk = 36
