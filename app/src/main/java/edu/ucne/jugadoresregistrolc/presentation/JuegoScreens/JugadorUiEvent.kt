@@ -1,4 +1,4 @@
-package edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens
+package edu.ucne.jugadoresregistrolc.presentation.JuegoScreens
 
 sealed interface JugadorUiEvent {
     data class NombreChanged(val nombre: String): JugadorUiEvent
