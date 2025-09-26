@@ -1,13 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
     id("androidx.room")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
-    alias(libs.plugins.kotlin.serialization)
-
+    id("org.jetbrains.kotlin.plugin.compose")
+    alias(libs.plugins.kotlinx.serialization)
 }
+
 android {
     namespace = "edu.ucne.jugadoresregistrolc"
     compileSdk = 36
@@ -42,7 +42,7 @@ android {
         compose = true
     }
 
-    
+
 
 }
 
@@ -53,30 +53,9 @@ room {
 
 dependencies {
 
-    // LifeCycle
-    implementation(libs.androidx.lifecycle.runtime.compose)
+//    // LifeCycle
+//    implementation(libs.androidx.lifecycle.runtime.compose)
 
-    //navegacion
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.kotlin.serialization.json)
-
-    //room
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler)
-    //  optional - Kotlin Extensions and Coroutines support for Room
-    implementation(libs.androidx.room.ktx)
-
-    //Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
-
-    //retrofit
-    implementation(libs.retrofit)
-    implementation(libs.moshi.kotlin)
-    implementation(libs.converter.moshi)
-    implementation(libs.logging.interceptor)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -92,4 +71,25 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+
+    //room
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1") // Asegúrate de utilizar 'room-compiler' aquí
+    implementation("androidx.room:room-ktx:2.6.1")
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    //splash api
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    //icon api
+    implementation("androidx.compose.material:material-icons-extended:1.7.5")
 }
