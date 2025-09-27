@@ -1,4 +1,4 @@
-package edu.ucne.jugadoresregistrolc.Navigation
+package edu.ucne.jugadoresregistrolc.presentation.Navigation
 
 import kotlinx.serialization.Serializable
 

@@ -1,5 +1,5 @@
 // PartidaScreens/PartidaItem.kt
-package edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens
+package edu.ucne.jugadoresregistrolc.presentation.PartidaScreens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

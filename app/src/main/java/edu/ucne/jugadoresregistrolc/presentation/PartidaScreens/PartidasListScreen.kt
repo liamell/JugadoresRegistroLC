@@ -1,4 +1,4 @@
-package edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens
+package edu.ucne.jugadoresregistrolc.presentation.PartidaScreens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

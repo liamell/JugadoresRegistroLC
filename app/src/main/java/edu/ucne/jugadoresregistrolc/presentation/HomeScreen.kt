@@ -1,5 +1,5 @@
 // presentation/HomeScreen.kt
-package edu.ucne.jugadoresregistrolc.data.presentation
+package edu.ucne.jugadoresregistrolc.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -1,4 +1,4 @@
-package edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens
+package edu.ucne.jugadoresregistrolc.presentation.PartidaScreens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.hilt.navigation.compose.hiltViewModel
-import edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens.PartidaViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

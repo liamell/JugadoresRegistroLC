@@ -6,12 +6,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import edu.ucne.jugadoresregistrolc.Navigation.Screen
-import edu.ucne.jugadoresregistrolc.data.presentation.HomeScreen
-import edu.ucne.jugadoresregistrolc.data.presentation.JuegoScreens.JugadorScreen
-import edu.ucne.jugadoresregistrolc.data.presentation.JuegoScreens.JugadorListScreen
-import edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens.CreatePartidaScreen
-import edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens.PartidaListScreen
+import edu.ucne.jugadoresregistrolc.presentation.Navigation.Screen
+import edu.ucne.jugadoresregistrolc.presentation.HomeScreen
+import edu.ucne.jugadoresregistrolc.presentation.JuegoScreens.JugadorScreen
+import edu.ucne.jugadoresregistrolc.presentation.JuegoScreens.JugadorListScreen
+import edu.ucne.jugadoresregistrolc.presentation.PartidaScreens.CreatePartidaScreen
+import edu.ucne.jugadoresregistrolc.presentation.PartidaScreens.PartidaListScreen
 import edu.ucne.jugadoresregistrolc.data.repositories.JugadorRepository
 import edu.ucne.jugadoresregistrolc.data.repositories.PartidaRepository
 

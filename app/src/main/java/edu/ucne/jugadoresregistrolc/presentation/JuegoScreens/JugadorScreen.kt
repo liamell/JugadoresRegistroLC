@@ -1,5 +1,6 @@
-package edu.ucne.jugadoresregistrolc.data.presentation.JuegoScreens
+package edu.ucne.jugadoresregistrolc.presentation.JuegoScreens
 
+import JugadorViewModel
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,13 +29,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens.JugadorUiEvent
-import edu.ucne.jugadoresregistrolc.data.presentation.PartidaScreens.PartidaViewModel
+import edu.ucne.jugadoresregistrolc.presentation.JuegoScreens.JugadorUiEvent
+import edu.ucne.jugadoresregistrolc.presentation.PartidaScreens.PartidaViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun JugadorScreen(
-   viewModel: PartidaViewModel = hiltViewModel(),
+   viewModel: JugadorViewModel = hiltViewModel(),
     onBack: () -> Unit,
     jugadorId: Int?
 ) {
@@ -48,7 +49,7 @@ fun JugadorScreen(
 }
 @Composable
 fun JugadorBodyScreen(
-    uiState: PartidaViewModel.JugadorUiState,
+    uiState: JugadorViewModel.JugadorUiState,
     onEvent: (JugadorUiEvent) -> Unit,
     onBack:  () -> Unit
 ){
